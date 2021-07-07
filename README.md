@@ -6,3 +6,6 @@
 
 使用canvas呈現出刮刮樂效果
 座標設計為變動式,會根據圖片大小去顯示出刮出來的效果
+
+
+DEMO:https://scratchcarddemo.000webhostapp.com/
