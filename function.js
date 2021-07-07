@@ -189,7 +189,7 @@ function scrollAnimation() {
   $("#centerScroll").css("height", "170px");
   $("#leftScroll").animate({ left: "32.2%" }, 1700);
   $("#rightScroll").animate({ right: "32.2%" }, 1700);
-  $("#centerScroll").animate({ width: "350px" }, 1700, function () {
+  $("#centerScroll").animate({ width: "33%" }, 1700, function () {
     $("#scrollContent").css("color", "#c03c3c").hide().fadeIn(10);
     $("#scrollRhinestone").css("opacity", "1").hide().fadeIn(10);
   });
