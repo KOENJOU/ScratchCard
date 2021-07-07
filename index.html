@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch Card</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <style>
+        .pointer {
+            cursor: pointer;
+        }
+
+        .absolute {
+            position: absolute;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        #coin {
+            display: none;
+            width: 50px;
+            height: 50px;
+            z-index: 5;
+        }
+
+        #loading {
+            background-color: #f1f2f3;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #start,
+        #refresh {
+            height: 40px;
+            line-height: 40px;
+            width: 300px;
+            text-align: center;
+        }
+
+        /* 恭喜卷軸 */
+        #congratulationsMask>div {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .scroll-content>img:nth-child(1),
+        .scroll-content>img:nth-child(3) {
+            width: 27px;
+        }
+
+        .scroll-content>img:nth-child(2) {
+            width: 1%;
+        }
+
+        .scroll-content>div:nth-child(4) {
+            display: flex;
+            font-family: "PingFangSC-Semibold";
+            font-size: 16pt;
+            color: transparent;
+            width: 79.3%;
+        }
+
+        /* 遮罩 */
+        .mask {
+            background-color: rgba(0, 0, 0, .47);
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .center-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading" class="absolute">
+        <img src="images/Spinner-1s-200px.png" style="width: 15.8%">
+    </div>
+
+    <div id="start" class="pointer" onclick="draw()">
+        開始刮
+    </div>
+    <div id="refresh" class="pointer" onclick="window.location.reload();" style="display: none;">
+        重新產生
+    </div>
+
+    <div class="scratchcard-content">
+        <canvas id="canvas" class="absolute"></canvas>
+        <img src="images/money.jpg" style="width: 300px;height: 450px;">
+        <img id="coin" class="absolute" src="images/dollar.png">
+    </div>
+
+    <!-- 恭喜水鑽卷軸 -->
+    <div id="congratulationsMask" class="mask">
+        <div class="relative">
+            <div class="scroll-content center-div">
+                <img id="leftScroll" class="absolute" src="images/left.png">
+                <img id="centerScroll" class="" src="images/center.png">
+                <img id="rightScroll" class="absolute" src="images/right.png">
+                <div id="scrollContent" class="absolute center-div">獲得1000元</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="function.js"></script>
+    <script>
+        openScratchcard();
+    </script>
+</body>
+
+</html>
